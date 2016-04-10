@@ -1,0 +1,27 @@
+{
+  "name": "nodejam",
+  "version": "1.0.0",
+  "description": "Makes codejam easier for people using Node.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joe-tom/nodejam.git"
+  },
+  "keywords": [
+    "node.js",
+    "JS",
+    "codejam",
+    "google",
+    "google-codejam"
+  ],
+  "author": "Joseph Thomas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joe-tom/nodejam/issues"
+  },
+  "homepage": "https://github.com/joe-tom/nodejam#readme"
+}
