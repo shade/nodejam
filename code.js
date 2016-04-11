@@ -1,3 +1,5 @@
+#INPUT: input.dat
+
 function main(data){
 	
 	
