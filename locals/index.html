@@ -5,9 +5,29 @@
 			body{
 				overflow: hidden;
 			}
+			#headerBar{
+				height:30px;
+				position:absolute;
+				top:0px;
+				left:0px;
+				z-index: 100;
+				width:100%;
+				background-color:#34495E;
+			}
+				#headerLogo{
+					font-size:14px;
+					font-weight:600;
+					color:#FFF;
+					font-family: Raleway;
+					height:30px;
+					line-height: 30px;
+					margin-left:20px;
+				}
 			#inputBox{
-				position: relative;
-				height:38%;
+				position: absolute;
+				top:30px;
+				left: 0px;
+				height:calc(38% - 30px);
 				background-color:#eee;
 				font-family:Open Sans;
 				box-sizing: border-box;
@@ -15,12 +35,16 @@
 				color:#999;
 				font-size:12px;
 				overflow-y: scroll;
+				width:100%;
 			}
 			#outputBox{
-				position: relative;
+				position: absolute;
+				top:38%;
+				left:0px;
 				height:61%;
 				background-color: #ddd;
 				border-top:1px solid rgba(0,0,0,0.1);
+				width:100%;
 			}
 			.box-description{
 				font-family:Raleway;
@@ -35,6 +59,10 @@
 		</style>
 	</head>
 	<body>
+		<div id="headerBar">
+			<div id="headerLogo">NodeJam</div>
+		
+		</div>
 		<div id="inputBox">
 			2<br>
 			5 3<br>

@@ -1,6 +1,7 @@
 var Server	=	require('http').createServer(Handle);
 var io	=	require('socket.io')(Server);
 var fs	=	require('fs');
+var chokidar	=	require('chokidar');
 var GET	=	{};
 
 //A little handler for this server
@@ -31,7 +32,6 @@ GET['/']	=	function(req,res){
 	});	
 	
 }
-
 
 
 
