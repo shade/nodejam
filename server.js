@@ -1,7 +1,6 @@
 var Server	=	require('http').createServer(Handle);
 var io	=	require('socket.io')(Server);
 var fs	=	require('fs');
-var chokidar	=	require('chokidar');
 var GET	=	{};
 
 //A little handler for this server
@@ -18,9 +17,10 @@ function Handle(req,res){
 
 
 //Our routes
-GET['/']	=	function(req,res){
-
-	return fs.readFile(__dirname+"/locals/index.html",function(err,data){
+GET['/play.png']	=	GET['/']	=	function(req,res){
+	if(req.url	=== '/')
+		req.url	=	'index.html'
+	return fs.readFile(__dirname+"/locals/"+req.url,function(err,data){
 		//If there's an error, send a 500
 		if(err){
 			res.writeHead(500);
