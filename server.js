@@ -6,7 +6,8 @@ var GET	=	{};
 //A little handler for this server
 
 function Handle(req,res){
-	req.url	=	req.url.trim();
+	console.log(req.url)
+	req.url	=	req.url.trim().toLowerCase();
 	if(GET[req.url]){
 		GET[req.url](req,res);
 	}else{
@@ -17,7 +18,7 @@ function Handle(req,res){
 
 
 //Our routes
-GET['/play.png']	=	GET['/']	=	function(req,res){
+GET['/main.js']	=	GET['/play.png']	=	GET['/']	=	function(req,res){
 	if(req.url	=== '/')
 		req.url	=	'index.html'
 	return fs.readFile(__dirname+"/locals/"+req.url,function(err,data){
@@ -42,8 +43,4 @@ GET['/play.png']	=	GET['/']	=	function(req,res){
 
 
 
-
-
-
-
-Server.listen(1997);
+Server.listen(8080);
