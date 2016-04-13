@@ -1,6 +1,7 @@
 var Server	=	require('http').createServer(Handle);
 var io	=	require('socket.io')(Server);
 var fs	=	require('fs');
+var chokidar	=	require('chokidar');
 var GET	=	{};
 
 //A little handler for this server
@@ -34,9 +35,15 @@ GET['/main.js']	=	GET['/play.png']	=	GET['/']	=	function(req,res){
 	
 }
 
+var Sockets	=	{};
 
 
-
+io.on('connection',function(socket){
+	Sockets[socket.id]	=	socket;
+	socket.emit('file',function(){
+		
+	});
+});
 
 
 
