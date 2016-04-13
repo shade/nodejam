@@ -43,4 +43,4 @@ GET['/main.js']	=	GET['/play.png']	=	GET['/']	=	function(req,res){
 
 
 
-Server.listen(8080);
+Server.listen(1997);
