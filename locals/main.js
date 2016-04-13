@@ -30,9 +30,11 @@ var EVENTS	=	{
 	'file'	:	function(data){
 		data.name;	//the filename
 		data.data;	//the file data
+		
 		//HTML uses <br> instead of \n
 		data.data	=	data.data.replace(/\n/g,'<br>');
 		
+		//Replace the innerHTML
 		$('inputData').innerHTML	=	[
 			data.data
 		].join('');
@@ -41,9 +43,29 @@ var EVENTS	=	{
         data.title
     ].join('');
 		
+	},
+	'change'	:	function(data){
+		//HTML uses <br> instead of \n
+		data.data	=	data.data.replace(/\n/g,'<br>');
+		
+		//Replace the innerHTML
+		$('inputData').innerHTML	=	[
+			data.data
+		].join('');
+	},
+	'new'	:	function(data){
+		swal({
+			title: "New File Detected!",
+			text: "Do you want to make this the new input file?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Yes, this is mah input file",
+			closeOnConfirm: false 
+		},function(){   
+			
+		});
 	}
-
-
 
 
 
