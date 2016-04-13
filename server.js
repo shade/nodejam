@@ -2,7 +2,12 @@ var Server	=	require('http').createServer(Handle);
 var io	=	require('socket.io')(Server);
 var fs	=	require('fs');
 var chokidar	=	require('chokidar');
+
 var GET	=	{};
+var Sockets	=	{};
+var Input	=	{};
+var Ouput	=	"";
+
 
 //A little handler for this server
 
@@ -34,10 +39,6 @@ GET['/main.js']	=	GET['/play.png']	=	GET['/']	=	function(req,res){
 	});	
 	
 }
-
-var Sockets	=	{};
-
-
 io.on('connection',function(socket){
 	Sockets[socket.id]	=	socket;
 	socket.emit('file',function(){
@@ -47,6 +48,28 @@ io.on('connection',function(socket){
 
 
 
+
+
+
+(function main(){
+	//Read the config file.
+	var config	=	require('./config');
+
+	//Load the input.. and store in input file
+	Input	=	{
+		name	:	config.inputFile,
+		data	:	fs.readFileSync(config.inputFile).toString('ascii')
+	};
+	
+	//Calculate an output
+	var code	=	require(config.codeFile);
+	Ouput	=	code.main(Input.data);
+	
+	//Watch for new files and see if we need to change.
+	
+	
+	
+})()
 
 
 
