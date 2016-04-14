@@ -41,9 +41,8 @@ GET['/main.js']	=	GET['/play.png']	=	GET['/']	=	function(req,res){
 }
 io.on('connection',function(socket){
 	Sockets[socket.id]	=	socket;
-	socket.emit('file',function(){
-		
-	});
+	socket.emit('file',Input);
+	socket.emit('output',Ouput);
 });
 
 
@@ -63,11 +62,20 @@ io.on('connection',function(socket){
 	
 	//Calculate an output
 	var code	=	require(config.codeFile);
-	Ouput	=	code.main(Input.data);
+	Ouput	=	code(Input.data);
 	
 	//Watch for new files and see if we need to change.
-	
-	
+	var watch	=	chokidar.watch('./code.js');
+	watch.on('change',function(path){
+		//delete the require for the input
+		delete require.cache[require.resolve(config.codeFile)];
+		var code	=	require(config.codeFile);
+		Ouput	=	code(Input.data);
+		//send the output to everyone
+		for(var socket in Sockets){
+			Sockets[socket].emit('output',Ouput);
+		}
+	});
 	
 })()
 

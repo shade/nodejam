@@ -54,25 +54,12 @@ var EVENTS	=	{
 		].join('');
 	},
 	'new'	:	function(data){
-		swal({
-			title: "New File Detected!",
-			text: "Do you want to make this the new input file?",
-			type: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: "Yes, this is mah input file",
-			closeOnConfirm: false 
-		},function(){   
-			
-		});
+		
+	},
+	'output'	:	function(data){
+		data	=	data.replace(/\n/g,'<br>');
+		$('outputData').innerHTML	=	data;	
 	}
-
-
-
-
-
-
-
 
 }
 
