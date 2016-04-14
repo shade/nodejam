@@ -8,3 +8,6 @@ How to get started:
 *	git clone this repository, or download it somewhere
 *	do an npm install to install all the dependancies
 *	run a npm start
+
+input.dat	-	the data file for your input
+code.js		-	your javascript, main() accepts input data and outputs it.
