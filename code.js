@@ -2,7 +2,8 @@
 function main(data){
 	data	=	data.split('\n');
 	var T	=	parseInt(data.shift());
-
+	console.log(T);	
+	
 	while(--T>0){
 		FL	=	data.shift().split(' ').map(parseFloat);
 		N	=	FL[0];
@@ -10,9 +11,11 @@ function main(data){
 		PATHS	=	[];
 		
 		while(--N>0){
+			
 			path	=	data.shift().substr(1).split('/');
 			console.log(path);
 			PATHS.push(path)
+	
 			
 		}
 	}
