@@ -47,6 +47,19 @@ io.on('connection',function(socket){
 
 
 
+//Hijack the console.log
+(function(){
+    var oldLog = console.log;
+    console.log = function (msg) {
+			for(var id in Sockets){
+				Sockets[id].emit('console',msg);
+			}
+        oldLog.apply(console, arguments);
+    };
+})();
+
+
+
 
 
 
