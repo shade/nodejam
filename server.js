@@ -67,8 +67,9 @@ io.on('connection',function(socket){
 	}catch(e){
 		Ouput	=	JSON.stringify(e);
 	}
-	//Watch for new files and see if we need to change.
-	var codeFile	=	chokidar.watch('./code.js');
+	
+	//Watch for changes in the code, and update the output
+	var codeFile	=	chokidar.watch(config.codeFile);
 	codeFile.on('change',function(path){
 		//delete the require for the input
 		delete require.cache[require.resolve(config.codeFile)];
@@ -84,8 +85,21 @@ io.on('connection',function(socket){
 		}
 	});
 	
+	//Watch for changes in the input file, and update it
+	var inputFile	=	chokidar.watch(config.inputFile);
+	inputFile.on('change',function(paht){
+		Input	=	{
+			name	:	config.inputFile,
+			data	:	fs.readFileSync(config.inputFile).toString('ascii')
+		};
+		//send the output to everyone
+		for(var socket in Sockets){
+			Sockets[socket].emit('input',Input);
+		}
+		
+	});
 	
-})()
+})();
 
 
 
