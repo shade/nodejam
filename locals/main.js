@@ -71,9 +71,9 @@ var EVENTS	=	{
 			data	=	JSON.stringify(data);
 			data	=	data.replace(/,/g,'<br> CONSOLE:')
 		}else{
-			data	=	"CONSOLE: "+data
+			data	=	"<br>CONSOLE: "+data
 		}
-		$('outputData').innerHTML	=	data;	
+		$('outputData').innerHTML	+=	data;	
 		
 	}
 
