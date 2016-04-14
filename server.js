@@ -61,21 +61,29 @@ io.on('connection',function(socket){
 	};
 	
 	//Calculate an output
-	var code	=	require(config.codeFile);
-	Ouput	=	code(Input.data);
-	
-	//Watch for new files and see if we need to change.
-	var watch	=	chokidar.watch('./code.js');
-	watch.on('change',function(path){
-		//delete the require for the input
-		delete require.cache[require.resolve(config.codeFile)];
+	try{
 		var code	=	require(config.codeFile);
 		Ouput	=	code(Input.data);
+	}catch(e){
+		Ouput	=	JSON.stringify(e);
+	}
+	//Watch for new files and see if we need to change.
+	var codeFile	=	chokidar.watch('./code.js');
+	codeFile.on('change',function(path){
+		//delete the require for the input
+		delete require.cache[require.resolve(config.codeFile)];
+		try{
+			var code	=	require(config.codeFile);
+			Ouput	=	code(Input.data);
+		}catch(e){
+			Output	=	JSON.stringify(e);
+		}
 		//send the output to everyone
 		for(var socket in Sockets){
 			Sockets[socket].emit('output',Ouput);
 		}
 	});
+	
 	
 })()
 
