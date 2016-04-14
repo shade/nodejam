@@ -65,6 +65,7 @@ io.on('connection',function(socket){
 		var code	=	require(config.codeFile);
 		Ouput	=	code(Input.data);
 	}catch(e){
+		console.log(e);
 		Ouput	=	JSON.stringify(e);
 	}
 	
@@ -77,6 +78,7 @@ io.on('connection',function(socket){
 			var code	=	require(config.codeFile);
 			Ouput	=	code(Input.data);
 		}catch(e){
+			console.log(e);
 			Output	=	JSON.stringify(e);
 		}
 		//send the output to everyone

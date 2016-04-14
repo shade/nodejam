@@ -57,7 +57,12 @@ var EVENTS	=	{
 		
 	},
 	'output'	:	function(data){
-		data	=	data.replace(/\n/g,'<br>');
+		if(typeof data	== "object"){
+			data	=	JSON.stringify(data);
+			data	=	data.replace(/,/g,'<br>')
+		}else{
+			data	=	data.replace(/\n/g,'<br>');
+		}
 		$('outputData').innerHTML	=	data;	
 	}
 
