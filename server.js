@@ -61,10 +61,17 @@ io.on('connection',function(socket){
 
 
 //Handle file changes
-var watchers	=	{
+var Watchers	=	{
 	input	:	chokidar.watch('./input.dat'),
 	code	:	chokidar.watch('./code.js')
 };
+
+Watchers.input.on('change',function(){
+	reCheck();
+});
+Watchers.code.on('change',function(){
+	reCheck();
+});
 
 
 
