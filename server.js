@@ -101,6 +101,7 @@ function reCheck(){
 	try{
 		_output	=	require(Config.codeFile)(fs.readFileSync(Config.inputFile).toString('ascii'))
 	}catch(err){
+		console.log(err)
 		_output	=	err;
 	}
 	

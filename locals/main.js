@@ -48,7 +48,7 @@ var EVENTS	=	{
 			data	=	JSON.stringify(data);
 			data	=	data.replace(/,/g,'<br>')
 		}else{
-			data	=	data.replace(/\n/g,'<br>');
+			data	=	data.replace(/\r\n/g,'<br>');
 		}
 		$('outputData').innerHTML	+=	'<br>'+data;	
 	},
