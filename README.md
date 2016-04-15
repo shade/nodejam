@@ -9,5 +9,25 @@ How to get started:
 *	do an npm install to install all the dependancies
 *	run a npm start
 
-input.dat	-	the data file for your input
-code.js		-	your javascript, main() accepts input data and outputs it.
+code.js
+```javascript
+
+function main(data){
+	//The data from your input file is fed in through the data parameter
+	
+	//Room for you to do your codejam thing.
+	var answer = [
+		'Case #0: '+data.length,
+		'Case #1: '+data.length
+	].join('\n');
+	
+	
+	
+	//Return the formatted final data;
+	return answer;
+}
+
+
+
+module.exports = main;
+```
