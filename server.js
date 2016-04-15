@@ -49,6 +49,8 @@ io.on('connection',function(socket){
 	});
 	socket.emit('output',Output);
 	reCheck();
+	
+	socket.on('publish',doPublish);
 });
 
 //Handle our console.log
@@ -77,6 +79,32 @@ Watchers.input.on('change',function(){
 Watchers.code.on('change',function(){
 	reCheck();
 });
+
+
+
+
+//The function to make your thing published
+function doPublish(){
+	try{
+		var yourCode	=	require(Config.codeFile);
+		var _output	=	yourCode(fs.readFileSync(Config.inputFile).toString('ascii'))
+		fs.writeFile('./final/output.dat',_output);
+		fs.writeFile('./final/source.js',[
+			"var process = require('process')",
+			"process.stdin.setEncoding('utf8');",
+			"var FULL_DATA = ''",
+			"process.stdin.on('readable', () => {",
+				"FULL_DATA+=process.stdin.read();",
+			"});",
+			"process.stdin.on('end', () => {",
+				"process.stdout.write(main(FULL_DATA));",
+			"});",
+			fs.readFileSync(Config.codeFile)
+		].join('\n'));
+	}catch(e){
+	
+	}
+}
 
 
 

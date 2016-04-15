@@ -10,7 +10,7 @@
 7 verbose unsafe-perm in lifecycle true
 8 info nodejam@1.0.0 Failed to exec start script
 9 verbose stack Error: nodejam@1.0.0 start: `node server.js`
-9 verbose stack Exit status 3221225725
+9 verbose stack Exit status 1
 9 verbose stack     at EventEmitter.<anonymous> (c:\Program Files (x86)\nodejs\node_modules\npm\lib\utils\lifecycle.js:214:16)
 9 verbose stack     at emitTwo (events.js:87:13)
 9 verbose stack     at EventEmitter.emit (events.js:172:7)
@@ -27,7 +27,7 @@
 15 error npm  v2.14.7
 16 error code ELIFECYCLE
 17 error nodejam@1.0.0 start: `node server.js`
-17 error Exit status 3221225725
+17 error Exit status 1
 18 error Failed at the nodejam@1.0.0 start script 'node server.js'.
 18 error This is most likely a problem with the nodejam package,
 18 error not with npm itself.

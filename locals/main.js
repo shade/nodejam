@@ -74,7 +74,9 @@ for(var event in EVENTS){
 
 
 
-
+$('publishButton').addEventListener('click',function(){
+	socket.emit('publish');
+});
 
 
 
