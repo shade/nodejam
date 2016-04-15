@@ -1,9 +1,12 @@
 
 
 function main(data){
-	
-	
+	for(var i = 0;i<10;i++)
+		console.log('asdf')
+		
+	console.log(data.split('\n'));
 	return data;
+	
 }
 
 //The input file that you want to run through... 

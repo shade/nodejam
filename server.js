@@ -4,6 +4,8 @@ var fs	=	require('fs');
 var chokidar	=	require('chokidar');
 var Config	=	require('./config');
 
+var Input	=	"";
+var Output	=	"";
 var GET	=	{};
 var Sockets	=	{};
 var Analyzing	=	false;
@@ -41,8 +43,11 @@ GET['/main.js']	=	GET['/play.png']	=	GET['/']	=	function(req,res){
 //Handle the sockets
 io.on('connection',function(socket){
 	Sockets[socket.id]	=	socket;
-	socket.emit('file',Input);
-	socket.emit('output',Ouput);
+	socket.emit('file',{
+		name : Config.inputFile,
+		data : fs.readFileSync(Config.inputFile).toString('ascii')
+	});
+	socket.emit('output',Output);
 	reCheck();
 });
 
